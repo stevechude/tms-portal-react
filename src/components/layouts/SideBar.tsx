@@ -54,16 +54,16 @@ const SideBar = () => {
       {/* bottom */}
       <div className="text-white text-sm mx-6 mb-6 bg-[#FFFFFF26] rounded-xl">
         <div className="flex flex-col items-center gap-4 py-4 px-4">
-          <div className="flex items-center gap-2">
+          <button className="flex items-center gap-2 cursor-pointer hover:bg-white/20 rounded-2xl px-2 py-1.5">
             <p>Logout</p>
             <LogoutIcon />
-          </div>
+          </button>
 
           <div className="rounded-3xl bg-primary flex">
-            <div className="flex items-center gap-3 px-4 py-1.5">
+            <button className="flex items-center gap-3 px-4 py-1.5 cursor-pointer">
               <QuestionIcon />
               <p className="font-extralight">Need Help?</p>
-            </div>
+            </button>
           </div>
           <p className="text-[#F5F7FA] text-xs font-light">
             © 2025 Keystone Bank.
