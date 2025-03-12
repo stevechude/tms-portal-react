@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #002561;
+  --text-primary: #15171c;
+  --text-secondary: #98a2b3;
+  --text-tertiary: #009fe3;
+}
+
+body {
+  font-family: "Urbanist", "Satoshi", sans-serif;
+}
+
+/* Apply Tailwind-like utility classes */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.spin-button-none::-webkit-outer-spin-button,
+.spin-button-none::-webkit-inner-spin-button {
+  appearance: none;
+}
