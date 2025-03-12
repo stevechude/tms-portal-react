@@ -52,7 +52,7 @@ const SideBar = () => {
       </div>
 
       {/* bottom */}
-      <div className="text-white text-sm mx-6 mb-10 bg-[#FFFFFF26] rounded-xl">
+      <div className="text-white text-sm mx-6 mb-6 bg-[#FFFFFF26] rounded-xl">
         <div className="flex flex-col items-center gap-4 py-4 px-4">
           <div className="flex items-center gap-2">
             <p>Logout</p>

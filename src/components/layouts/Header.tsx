@@ -1,4 +1,3 @@
-import React from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
