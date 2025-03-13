@@ -7,6 +7,7 @@
   --text-primary: #15171c;
   --text-secondary: #98a2b3;
   --text-tertiary: #009fe3;
+  --bg-button: #f5f7fa;
 }
 
 body {
@@ -16,6 +17,10 @@ body {
 /* Apply Tailwind-like utility classes */
 .bg-primary {
   background-color: var(--bg-primary);
+}
+
+.bg-button {
+  background-color: var(--bg-button);
 }
 
 .text-primary {

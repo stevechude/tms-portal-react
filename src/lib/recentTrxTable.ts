@@ -1,0 +1,42 @@
+export const recentTableData = [
+  {
+    id: 1,
+    amount: "-₦25,000.00",
+    trxLocation: "Lagos Mainland",
+    trxId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 2,
+    amount: "-₦25,000.00",
+    trxLocation: "Ikeja",
+    trxId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 3,
+    amount: "-₦25,000.00",
+    trxLocation: "Lagos Mainland",
+    trxId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 4,
+    amount: "-₦25,000.00",
+    trxLocation: "Victoria Island",
+    trxId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 5,
+    amount: "-₦25,000.00",
+    trxLocation: "Lagos Mainland",
+    trxId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+];
