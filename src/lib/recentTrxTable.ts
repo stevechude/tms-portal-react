@@ -1,7 +1,7 @@
 export const recentTableData = [
   {
     id: 1,
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     trxLocation: "Lagos Mainland",
     trxId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
@@ -9,7 +9,7 @@ export const recentTableData = [
   },
   {
     id: 2,
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     trxLocation: "Ikeja",
     trxId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
@@ -17,7 +17,7 @@ export const recentTableData = [
   },
   {
     id: 3,
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     trxLocation: "Lagos Mainland",
     trxId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
@@ -25,7 +25,7 @@ export const recentTableData = [
   },
   {
     id: 4,
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     trxLocation: "Victoria Island",
     trxId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
@@ -33,7 +33,7 @@ export const recentTableData = [
   },
   {
     id: 5,
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     trxLocation: "Lagos Mainland",
     trxId: "104567890135",
     dateTime: "2021-09-01 12:00AM",

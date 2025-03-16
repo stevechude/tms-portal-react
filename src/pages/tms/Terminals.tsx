@@ -3,7 +3,7 @@ import DropButton from "../../components/btn/DropButton";
 import DashLayout from "../../components/layouts/DashLayout";
 import DocumentIcon from "../../assets/DocumentIcon";
 import Table from "../../components/table/Table";
-import { transactionTableData } from "../../lib/tranxTableData";
+import { terminalData } from "../../lib/terminalData";
 
 const Terminals = () => {
   return (
@@ -50,12 +50,13 @@ const Terminals = () => {
               <Table
                 headers={[
                   { key: "terminalId", label: "Terminal ID" },
-                  { key: "amount", label: "Amount" },
-                  { key: "transactionId", label: "Transaction ID" },
-                  { key: "dateTime", label: "Date & Time" },
-                  { key: "status", label: "Status" },
+                  { key: "terminalLocation", label: "Terminal Location" },
+
+                  { key: "dateTime", label: "Activation Date & Time" },
+                  { key: "batteryHealth", label: "Battery Health" },
+                  { key: "terminalStatus", label: "Terminal Status" },
                 ]}
-                data={transactionTableData}
+                data={terminalData}
                 click={true}
               />
             </div>

@@ -7,6 +7,8 @@ import Dashboard from "./pages/tms/Dashboard";
 import Transactions from "./pages/tms/Transactions";
 import Terminals from "./pages/tms/Terminals";
 import Requests from "./pages/tms/Requests";
+import TerminalDetails from "./pages/tms/TerminalDetails";
+import RequestDetails from "./pages/tms/RequestDetails";
 
 function AppRoutes() {
   return (
@@ -22,6 +24,10 @@ function AppRoutes() {
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/terminals" element={<Terminals />} />
         <Route path="/requests" element={<Requests />} />
+
+        {/* Dynamic route for Terminal Details */}
+        <Route path="/terminals/:id" element={<TerminalDetails />} />
+        <Route path="/requests/:id" element={<RequestDetails />} />
       </Routes>
     </>
   );

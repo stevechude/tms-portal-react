@@ -33,12 +33,16 @@ const SideBar = () => {
               <div className="flex items-center gap-1.5 py-2 px-2.5">
                 {
                   <link.icon
-                    fill={location.pathname === link.path ? "#002561" : "white"}
+                    fill={
+                      location.pathname.includes(link.path)
+                        ? "#002561"
+                        : "white"
+                    }
                   />
                 }
                 <p
                   className={`${
-                    location.pathname === link.path
+                    location.pathname.includes(link.path)
                       ? "#text-primary"
                       : "text-white"
                   }`}

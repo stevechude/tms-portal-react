@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CgMoreVertical } from "react-icons/cg";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
@@ -18,8 +18,9 @@ type Props = {
 };
 
 const Table = ({ headers, data, click }: Props) => {
-  const location = useLocation();
   const [openTrxDetails, setOpenTrxDetails] = useState(false);
+  const location = useLocation();
+  const navigation = useNavigate();
 
   const trxDeets = () => {
     location.pathname.includes("/transactions")
@@ -27,6 +28,43 @@ const Table = ({ headers, data, click }: Props) => {
       : setOpenTrxDetails(false);
     return;
   };
+
+  const seeTerminalDetails = (terminalId: number | string) => {
+    navigation(`/terminals/${terminalId}`);
+  };
+
+  const seeRequestDetails = (requestId: number | string) => {
+    navigation(`/requests/${requestId}`);
+  };
+
+  const handleClickIcon = (
+    terminalId: number | string,
+    requestId: number | string
+  ) => {
+    if (!click) return;
+    if (click && location.pathname.includes("transactions")) {
+      trxDeets;
+    }
+    if (click && location.pathname.includes("terminals")) {
+      seeTerminalDetails(terminalId);
+    }
+    if (click && location.pathname.includes("requests")) {
+      seeRequestDetails(requestId);
+    }
+  };
+
+  function formatAmount(amount: number) {
+    // const numericAmount =
+    const amountString =
+      typeof amount === "string" ? amount : amount?.toString();
+
+    // Remove commas from the amount
+    const numericAmount = parseFloat(amountString?.replace(/,/g, ""));
+
+    return Number(numericAmount).toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+    }); // Format the number with commas
+  }
 
   return (
     <div>
@@ -55,35 +93,74 @@ const Table = ({ headers, data, click }: Props) => {
               }`}
             >
               {headers.map((header, i) => (
-                <td key={i} className={`text-left px-4 py-3`}>
-                  {/* {header.key === "amount" ? "₦" : ""} */}
+                <td
+                  key={i}
+                  className={`text-left px-4 py-3 ${
+                    click ? "cursor-pointer" : ""
+                  }`}
+                >
+                  {header.key === "amount" ? (
+                    <span className="text-xs">₦</span>
+                  ) : (
+                    ""
+                  )}
                   <Link
                     to={""}
-                    className={`${click ? "cursor-text" : ""} ${
-                      header.key === "amount" ? "text-red-500" : ""
+                    className={`${click ? "cursor-pointer" : ""} ${
+                      header.key === "batteryHealth" ? "text-red-500" : ""
+                    } ${
+                      header.key === "amount" && dt[header.key] < 1
+                        ? "text-red-500"
+                        : ""
                     } ${
                       header.key === "status" && dt[header.key] === "completed"
                         ? "text-green-500 bg-[#E6F9F0] rounded-3xl px-2 py-1 capitalize"
+                        : ""
+                    } ${
+                      header.key === "terminalStatus" &&
+                      dt[header.key] === "Active"
+                        ? "text-green-500 bg-[#E6F9F0] rounded-3xl px-2 py-1 capitalize"
+                        : ""
+                    } ${
+                      header.key === "requestStatus" &&
+                      dt[header.key] === "Approved"
+                        ? "text-green-500 bg-[#E6F9F0] rounded-3xl px-2 lg:px-4 py-1 capitalize"
+                        : ""
+                    } ${
+                      header.key === "requestStatus" &&
+                      dt[header.key] === "Pending"
+                        ? "text-[#F69625] bg-[#FDF5ED] rounded-3xl px-2 lg:px-4 py-1 capitalize"
+                        : ""
+                    } ${
+                      header.key === "requestStatus" &&
+                      dt[header.key] === "Rejected"
+                        ? "text-[#FF2828] bg-[#F8F2F2] rounded-3xl px-2 lg:px-4 py-1 capitalize"
                         : ""
                     }`}
                   >
                     {header.key === "createdAt"
                       ? dt[header.key].slice(0, 10)
                       : dt[header.key] && header.key === "amount"
-                      ? dt[header.key]
+                      ? formatAmount(dt[header.key])
                       : dt[header.key]}
                   </Link>
                 </td>
               ))}
-              <td>
-                <button onClick={trxDeets} className="cursor-pointer">
-                  {location.pathname.includes("/terminals") ? (
-                    <FaAngleRight />
-                  ) : (
-                    <CgMoreVertical />
-                  )}
-                </button>
-              </td>
+              {click && (
+                <td>
+                  <button
+                    onClick={() => handleClickIcon(dt?.id, dt?.id)}
+                    className="cursor-pointer"
+                  >
+                    {location.pathname.endsWith("/terminals") ||
+                    location.pathname.endsWith("/requests") ? (
+                      <FaAngleRight />
+                    ) : (
+                      <CgMoreVertical />
+                    )}
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

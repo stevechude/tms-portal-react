@@ -2,7 +2,7 @@ export const transactionTableData = [
   {
     id: 1,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -10,7 +10,7 @@ export const transactionTableData = [
   {
     id: 2,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -18,7 +18,7 @@ export const transactionTableData = [
   {
     id: 3,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -26,7 +26,7 @@ export const transactionTableData = [
   {
     id: 4,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -34,7 +34,7 @@ export const transactionTableData = [
   {
     id: 5,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -42,7 +42,7 @@ export const transactionTableData = [
   {
     id: 6,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -50,7 +50,7 @@ export const transactionTableData = [
   {
     id: 7,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -58,7 +58,7 @@ export const transactionTableData = [
   {
     id: 8,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -66,7 +66,7 @@ export const transactionTableData = [
   {
     id: 9,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
@@ -74,7 +74,7 @@ export const transactionTableData = [
   {
     id: 10,
     terminalId: "10149854773",
-    amount: "-₦25,000.00",
+    amount: -25000.0,
     transactionId: "104567890135",
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
