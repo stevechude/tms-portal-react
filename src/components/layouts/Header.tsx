@@ -13,6 +13,10 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate();
 
+  const goToProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <div className="flex bg-white w-full max-h-[80px] h-[70px] lg:h-[80px] shadow">
       <div className="w-full flex items-center justify-between px-2 lg:px-4">
@@ -122,13 +126,18 @@ const Header = () => {
           </div>
 
           {/* user deets */}
-          <div className="bg-[#FAFAFA] rounded-3xl flex items-center">
-            <div className="flex items-center gap-3 lg:gap-5 px-2 md:px-3 py-1.5">
+          <div className="bg-[#FAFAFA] hover:border hover:border-[#98a2b3] rounded-3xl flex items-center">
+            <button
+              onClick={goToProfile}
+              className="flex items-center gap-3 lg:gap-5 px-2 md:px-3 py-1.5 cursor-pointer"
+            >
               <div>
                 <img src="/dashboard/userImg.png" alt="user image" />
               </div>
-              <FaAngleDown color="#718096" />
-            </div>
+              <p className="text-[#002561] text-xs md:text-sm lg:text-base">
+                John Doe
+              </p>
+            </button>
           </div>
         </div>
       </div>

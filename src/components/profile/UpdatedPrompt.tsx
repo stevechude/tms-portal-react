@@ -4,18 +4,18 @@ type Props = {
   close?: () => void;
 };
 
-const ResetSuccessful = ({ close }: Props) => {
+const UpdatedPrompt = ({ close }: Props) => {
   return (
-    <div className="bg-white p-5 md:p-8 rounded-3xl w-[80vw] md:w-[50vw] lg:w-[25rem] xl:w-[28rem] text-black">
+    <div className="bg-white p-5 md:p-8 rounded-3xl w-[80vw] md:w-[50vw] lg:w-[28rem] xl:w-[30rem] text-black">
       <div className="flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-3">
           <Good />
           <p className="text-primary font-semibold text-xl md:text-3xl text-center">
-            Password Reset
+            Profile Updated
           </p>
           <p className="text-secondary text-xs lg:text-sm xl:text-base text-center">
-            Fantastic! Your password is now reset. Kindly <br /> proceed to the
-            login page.
+            Excellent! Your profile has been successfully updated with the
+            information you provided.
           </p>
         </div>
         <button
@@ -29,4 +29,4 @@ const ResetSuccessful = ({ close }: Props) => {
   );
 };
 
-export default ResetSuccessful;
+export default UpdatedPrompt;
