@@ -4,8 +4,32 @@ import DropButton from "../../components/btn/DropButton";
 import DocumentIcon from "../../assets/DocumentIcon";
 import Table from "../../components/table/Table";
 import { transactionTableData } from "../../lib/tranxTableData";
+import ReactPaginate from "react-paginate";
+import { useEffect, useState } from "react";
 
 const Transactions = () => {
+  const [itemsPerPage] = useState(10);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [showingNumber, setShowingNumber] = useState(0);
+
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = transactionTableData?.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(transactionTableData.length / itemsPerPage);
+
+  const handlePageClick = (event: any) => {
+    const newOffset =
+      (event.selected * itemsPerPage) % transactionTableData.length;
+    setItemOffset(newOffset);
+  };
+
+  useEffect(() => {
+    if (transactionTableData.length > 10) {
+      setShowingNumber(10);
+    } else if (transactionTableData.length <= 10) {
+      setShowingNumber(itemsPerPage);
+    }
+  }, [transactionTableData]);
+
   return (
     <DashLayout>
       <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 w-full">
@@ -46,7 +70,7 @@ const Transactions = () => {
               </div>
             </div>
             {/* table */}
-            <div>
+            <div className="flex flex-col gap-0.5">
               <Table
                 headers={[
                   { key: "terminalId", label: "Terminal ID" },
@@ -55,9 +79,38 @@ const Transactions = () => {
                   { key: "dateTime", label: "Date & Time" },
                   { key: "status", label: "Status" },
                 ]}
-                data={transactionTableData}
+                data={currentItems}
                 click={true}
               />
+
+              <div className="flex items-center w-full justify-between flex-wrap">
+                <div className="bg-button rounded-3xl flex items-center text-xs md:text-sm">
+                  <div className="px-2 py-1.5 lg:px-3 lg:py-2 flex items-center gap-2">
+                    <p className="text-[#131B33]">
+                      Showing 1 - {showingNumber} of
+                    </p>
+                    <div className="bg-primary rounded-3xl text-white">
+                      <p className="px-1.5 py-0.5 md:px-2 md:py-1">
+                        {transactionTableData.length}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="Next"
+                  onPageChange={handlePageClick}
+                  pageCount={pageCount}
+                  previousLabel="Prev"
+                  containerClassName="paginationContainer"
+                  activeClassName="paginationActive"
+                  pageClassName="eachElem"
+                  previousLinkClassName="prevBtnClass"
+                  nextLinkClassName="nexBtnClass"
+                  renderOnZeroPageCount={null}
+                />
+              </div>
             </div>
           </div>
         </div>

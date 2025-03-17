@@ -1,4 +1,3 @@
-import React from "react";
 import KeystoneIcon from "../../assets/KeystoneIcon";
 import Handle from "../../assets/Handle";
 import { sideBarLinks } from "../../lib/links";

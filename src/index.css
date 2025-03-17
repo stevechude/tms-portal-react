@@ -39,3 +39,24 @@ body {
 .spin-button-none::-webkit-inner-spin-button {
   appearance: none;
 }
+
+/* react paginate styling */
+.paginationContainer {
+  @apply w-fit text-xs lg:text-sm font-medium text-[#98a2b3] flex items-center justify-center;
+}
+
+.paginationActive {
+  @apply bg-[#002561] rounded-full text-white;
+}
+
+.eachElem {
+  @apply py-1 px-2 lg:px-3 cursor-pointer;
+}
+
+.prevBtnClass {
+  @apply text-[#98a2b3] px-2 cursor-pointer;
+}
+
+.nexBtnClass {
+  @apply text-[#98a2b3] px-2 cursor-pointer;
+}

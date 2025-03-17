@@ -79,4 +79,28 @@ export const transactionTableData = [
     dateTime: "2021-09-01 12:00AM",
     status: "completed",
   },
+  {
+    id: 11,
+    terminalId: "10149854773",
+    amount: -25000.0,
+    transactionId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 12,
+    terminalId: "10149854773",
+    amount: -25000.0,
+    transactionId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
+  {
+    id: 13,
+    terminalId: "10149854773",
+    amount: -25000.0,
+    transactionId: "104567890135",
+    dateTime: "2021-09-01 12:00AM",
+    status: "completed",
+  },
 ];
