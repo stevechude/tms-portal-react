@@ -4,6 +4,7 @@ import TextBtn from "../buttons/TextBtn";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
 import UpdatedPrompt from "./UpdatedPrompt";
+import CardSuccessful from "../cards/CardSuccessful";
 
 const bizDescription = [
   "Hospitality",
@@ -144,7 +145,12 @@ const BusinessInfo = () => {
       </div>
       {profileUpdated && (
         <Modal show={profileUpdated} onClose={() => setProfileUpdated(false)}>
-          <UpdatedPrompt close={() => setProfileUpdated(false)} />
+          <CardSuccessful
+            close={() => setProfileUpdated(false)}
+            header="Profile Updated"
+            description="Excellent! Your profile has been successfully updated with the
+            information you provided."
+          />
         </Modal>
       )}
     </>

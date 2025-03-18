@@ -2,20 +2,21 @@ import Good from "../../assets/Good";
 
 type Props = {
   close?: () => void;
+  header: string;
+  description: string;
 };
 
-const UpdatedPrompt = ({ close }: Props) => {
+const CardSuccessful = ({ close, header, description }: Props) => {
   return (
-    <div className="bg-white p-5 md:p-8 rounded-3xl w-[80vw] md:w-[50vw] lg:w-[28rem] xl:w-[30rem] text-black">
+    <div className="bg-white p-5 md:p-8 rounded-3xl w-[80vw] md:w-[50vw] lg:w-[25rem] xl:w-[28rem] text-black">
       <div className="flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-3">
           <Good />
           <p className="text-primary font-semibold text-xl md:text-3xl text-center">
-            Profile Updated
+            {header}
           </p>
           <p className="text-secondary text-xs lg:text-sm xl:text-base text-center">
-            Excellent! Your profile has been successfully updated with the
-            information you provided.
+            {description}
           </p>
         </div>
         <button
@@ -29,4 +30,4 @@ const UpdatedPrompt = ({ close }: Props) => {
   );
 };
 
-export default UpdatedPrompt;
+export default CardSuccessful;

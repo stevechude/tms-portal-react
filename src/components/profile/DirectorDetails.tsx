@@ -4,6 +4,7 @@ import { MdOutlinePhoneEnabled } from "react-icons/md";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
 import UpdatedPrompt from "./UpdatedPrompt";
+import CardSuccessful from "../cards/CardSuccessful";
 
 const userTitle = ["Mr", "Mrs", "Miss"];
 
@@ -139,7 +140,12 @@ const DirectorDetails = () => {
       </div>
       {profileUpdated && (
         <Modal show={profileUpdated} onClose={() => setProfileUpdated(false)}>
-          <UpdatedPrompt close={() => setProfileUpdated(false)} />
+          <CardSuccessful
+            close={() => setProfileUpdated(false)}
+            header="Profile Updated"
+            description="Excellent! Your profile has been successfully updated with the
+            information you provided."
+          />
         </Modal>
       )}
     </>

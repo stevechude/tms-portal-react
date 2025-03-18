@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -7,7 +7,21 @@ type Props = {
 
 const OtpVerification = ({ cancel }: Props) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [timer, setTimer] = useState(59);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTimer((prev) => {
+        if (prev === 0) {
+          return 59;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, []);
 
   const handleTwoFaCode = async (element: any, index: number) => {
     if (isNaN(element.value)) return false;
@@ -90,7 +104,7 @@ const OtpVerification = ({ cancel }: Props) => {
                   <span className="text-primary text-base lg:text-lg">
                     Resend OTP
                   </span>{" "}
-                  in <span className="text-red-500">59</span> secs
+                  in <span className="text-red-500">{timer}</span> secs
                 </p>
               </div>
             </div>

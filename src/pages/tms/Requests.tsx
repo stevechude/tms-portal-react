@@ -6,11 +6,16 @@ import AddCircle from "../../assets/AddCircle";
 import { requestTableData } from "../../lib/requestTableData";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
+import { Modal } from "../../components/modal/Modal";
+import RequestCard from "../../components/requests/RequestCard";
+import CardSuccessful from "../../components/cards/CardSuccessful";
 
 const Requests = () => {
   const [itemsPerPage] = useState(10);
   const [itemOffset, setItemOffset] = useState(0);
   const [showingNumber, setShowingNumber] = useState(0);
+  const [makeRequest, setMakeRequest] = useState(false);
+  const [showDone, setShowDone] = useState(false);
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = requestTableData?.slice(itemOffset, endOffset);
@@ -28,6 +33,11 @@ const Requests = () => {
       setShowingNumber(itemsPerPage);
     }
   }, [requestTableData]);
+
+  const handleModals = () => {
+    setMakeRequest(false);
+    setShowDone((prev) => !prev);
+  };
 
   return (
     <DashLayout>
@@ -61,7 +71,10 @@ const Requests = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2 lg:gap-4">
-                <button className="flex items-center gap-3 bg-primary rounded-3xl px-2 lg:px-3 py-1.5 text-xs md:text-sm lg:text-base cursor-pointer text-white">
+                <button
+                  onClick={() => setMakeRequest(true)}
+                  className="flex items-center gap-3 bg-primary rounded-3xl px-2 lg:px-3 py-1.5 text-xs md:text-sm lg:text-base cursor-pointer text-white"
+                >
                   <AddCircle />
                   <p>Make New Request</p>
                 </button>
@@ -115,6 +128,23 @@ const Requests = () => {
           </div>
         </div>
       </div>
+      {makeRequest && (
+        <Modal show={makeRequest} onClose={() => setMakeRequest(false)}>
+          <RequestCard
+            onConfirm={handleModals}
+            cancel={() => setMakeRequest(false)}
+          />
+        </Modal>
+      )}
+      {showDone && (
+        <Modal show={showDone} onClose={() => setShowDone(false)}>
+          <CardSuccessful
+            close={() => setShowDone(false)}
+            header="Request Successful"
+            description="Fantastic! Your request was successfully processed."
+          />
+        </Modal>
+      )}
     </DashLayout>
   );
 };

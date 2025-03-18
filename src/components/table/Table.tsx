@@ -43,7 +43,7 @@ const Table = ({ headers, data, click }: Props) => {
   ) => {
     if (!click) return;
     if (click && location.pathname.includes("transactions")) {
-      trxDeets;
+      trxDeets();
     }
     if (click && location.pathname.includes("terminals")) {
       seeTerminalDetails(terminalId);

@@ -35,8 +35,8 @@ const Authlayout = ({
           </Swiper>
         </div>
         {/* forms */}
-        <div className="flex items-center justify-center w-full h-full lg:w-[50%] border border-[#009FE3] rounded-2xl lg:border-0">
-          <div className="flex flex-col gap-4 lg:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2n">
+        <div className="flex lg:items-center justify-center w-full h-full lg:w-[50%] border border-[#98a2b3] rounded-2xl lg:border-0">
+          <div className="flex flex-col mt-10 lg:mt-0 gap-4 lg:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2n">
             {children}
             <div className="flex items-center justify-center w-full">
               <p className="font-satoshi text-secondary text-center text-xs md:text-sm lg:text-base">

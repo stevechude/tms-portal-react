@@ -1,6 +1,6 @@
 type TextBtnProps = {
   title: string;
-  className: string;
+  className?: string;
   onClick?: () => void;
 };
 

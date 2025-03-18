@@ -83,14 +83,14 @@ const TransactionDeets = ({ onClose }: Props) => {
 
         <div className="bg-[#F8FAFC] rounded-2xl px-2 lg:px-3 w-full text-[#131B33]">
           <div className="px-2 py-3 flex flex-col gap-4 text-xs lg:text-sm">
-            <div className="flex items-center justify-between">
+            <button className="flex items-center justify-between cursor-pointer hover:bg-white">
               <p className="font-light">Save as Picture</p>
               <SavePic />
-            </div>
-            <div className="flex items-center justify-between">
+            </button>
+            <button className="flex items-center justify-between cursor-pointer hover:bg-white">
               <p className="font-light">Save as PDF</p>
               <SavePDF />
-            </div>
+            </button>
           </div>
         </div>
       </div>
