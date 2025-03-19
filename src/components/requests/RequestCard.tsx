@@ -1,3 +1,4 @@
+import { useState } from "react";
 import TextBtn from "../buttons/TextBtn";
 
 type Props = {
@@ -6,9 +7,15 @@ type Props = {
 };
 
 const RequestCard = ({ onConfirm, cancel }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleRequest = (e: any) => {
+    setIsLoading(true);
     e.preventDefault();
-    onConfirm();
+    setTimeout(() => {
+      setIsLoading(false);
+      onConfirm();
+    }, 2000);
     console.log("Request sent");
   };
 
@@ -104,7 +111,7 @@ const RequestCard = ({ onConfirm, cancel }: Props) => {
             >
               Cancel
             </button>
-            <TextBtn title="Confirm" />
+            <TextBtn title="Confirm" isLoading={isLoading} />
           </div>
         </form>
       </div>
