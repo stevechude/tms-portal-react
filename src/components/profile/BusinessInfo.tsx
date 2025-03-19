@@ -3,7 +3,6 @@ import { TbUserEdit } from "react-icons/tb";
 import TextBtn from "../buttons/TextBtn";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
-import UpdatedPrompt from "./UpdatedPrompt";
 import CardSuccessful from "../cards/CardSuccessful";
 
 const bizDescription = [

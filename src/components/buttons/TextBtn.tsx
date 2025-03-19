@@ -4,7 +4,7 @@ type TextBtnProps = {
   title: string;
   className?: string;
   onClick?: () => void;
-  isLoading: boolean;
+  isLoading?: boolean;
 };
 
 const TextBtn = ({ title, className, isLoading }: TextBtnProps) => {
