@@ -15,12 +15,12 @@ const ForgotPassword = () => {
 
   return (
     <Authlayout>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 lg:gap-5 2xl:gap-10">
         <div className="flex flex-col items-center lg:items-start gap-2">
           <p className="text-primary font-semibold text-xl md:text-3xl">
             Forgot Password
           </p>
-          <p className="text-secondary font-medium text-xs md:text-sm lg:text-base text-center lg:text-start">
+          <p className="text-secondary font-medium text-xs md:text-sm 2xl:text-base text-center lg:text-start">
             Enter your phone number or email associated with your account. We
             will then send you an OTP for verification.
           </p>
@@ -28,17 +28,17 @@ const ForgotPassword = () => {
 
         <form
           onSubmit={handleForgotPassword}
-          className="flex flex-col gap-10 w-full px-2 lg:p-0"
+          className="flex flex-col gap-10 lg:gap-5 2xl:gap-10 w-full px-2 lg:p-0"
         >
           <div className="flex flex-col gap-1">
             <label
               htmlFor="email"
-              className="text-primary text-sm lg:text-base"
+              className="text-primary text-sm 2xl:text-base"
             >
               Enter Email or Phone Number
             </label>
             <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-              <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm lg:text-base">
+              <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm 2xl:text-base">
                 <input
                   type="email"
                   placeholder="Email or Phone Number"
@@ -49,13 +49,13 @@ const ForgotPassword = () => {
             </div>
           </div>
 
-          <button className="bg-primary rounded-3xl py-2 md:py-3 w-full text-white cursor-pointer mt-20">
+          <button className="bg-primary rounded-3xl py-2 2xl:py-3 w-full text-white cursor-pointer mt-10 2xl:mt-20 text-xs md:text-sm 2xl:text-base">
             Continue
           </button>
         </form>
 
         <div className="flex items-center justify-center w-full">
-          <p className="text-secondary font-inter text-xs md:text-sm lg:text-base">
+          <p className="text-secondary font-inter text-xs md:text-sm 2xl:text-base">
             New user?{" "}
             <Link to={"/register"} className="text-tertiary">
               Click here to register
