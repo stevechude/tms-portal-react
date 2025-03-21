@@ -36,10 +36,10 @@ const Authlayout = ({
         </div>
         {/* forms */}
         <div className="flex lg:items-center justify-center w-full h-full lg:w-[50%] border border-[#98a2b3] rounded-2xl lg:border-0 overflow-y-auto">
-          <div className="flex flex-col mt-10 lg:mt-0 gap-4 2xl:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2n">
+          <div className="flex flex-col mt-10 lg:mt-0 gap-4 xl:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2n">
             {children}
             <div className="flex items-center justify-center w-full">
-              <p className="font-satoshi text-secondary text-center text-xs md:text-sm 2xl:text-base">
+              <p className="font-satoshi text-secondary text-center text-xs md:text-sm xl:text-base">
                 © <span className="text-[#002561]">2025</span> Keystone Bank
                 Ltd. Licensed by the CBN.
                 <br />

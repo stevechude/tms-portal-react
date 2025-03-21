@@ -23,13 +23,13 @@ const Login = () => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-10 lg:gap-5 2xl:gap-10 w-full px-2 lg:p-0">
+      <form className="flex flex-col gap-10 lg:gap-5 xl:gap-10 w-full px-2 lg:p-0">
         <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="text-primary text-sm 2xl:text-base">
+          <label htmlFor="email" className="text-primary text-sm xl:text-base">
             Enter Email or Phone Number
           </label>
           <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-            <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm 2xl:text-base">
+            <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
               <input
                 type="email"
                 placeholder="Email or Phone Number"
@@ -42,12 +42,12 @@ const Login = () => {
         <div className="flex flex-col gap-1">
           <label
             htmlFor="password"
-            className="text-primary text-sm 2xl:text-base"
+            className="text-primary text-sm xl:text-base"
           >
             Enter Password
           </label>
           <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-            <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm 2xl:text-base">
+            <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
               <input
                 type="password"
                 placeholder="Password"
@@ -58,7 +58,7 @@ const Login = () => {
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-sm 2xl:text-base">
+            <div className="flex items-center gap-1.5 text-sm xl:text-base">
               <input
                 type="checkbox"
                 name="remember"
@@ -69,7 +69,7 @@ const Login = () => {
             </div>
             <Link
               to={"/forgot-password"}
-              className="text-tertiary text-xs 2xl:text-sm text-right"
+              className="text-tertiary text-xs xl:text-sm text-right"
             >
               Forgot Password
             </Link>
@@ -78,13 +78,13 @@ const Login = () => {
 
         <button
           onClick={handleLogin}
-          className="bg-primary rounded-3xl py-2 2xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm 2xl:text-base"
+          className="bg-primary rounded-3xl py-2 xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm xl:text-base"
         >
           Login
         </button>
       </form>
       <div className="flex items-center justify-center w-full">
-        <p className="text-secondary font-inter text-xs md:text-sm 2xl:text-base">
+        <p className="text-secondary font-inter text-xs md:text-sm xl:text-base">
           New user?{" "}
           <Link to={"/register"} className="text-tertiary">
             Click here to register
