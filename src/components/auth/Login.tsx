@@ -84,7 +84,7 @@ const Login = () => {
         </button>
       </form>
       <div className="flex items-center justify-center w-full">
-        <p className="text-secondary font-inter text-xs md:text-sm xl:text-sm 2xl:text-base">
+        <p className="text-secondary font-inter text-xs md:text-sm xl:text-base">
           New user?{" "}
           <Link to={"/register"} className="text-tertiary">
             Click here to register
