@@ -2,20 +2,20 @@ import { GoTriangleUp } from "react-icons/go";
 
 const PosTerminal = () => {
   return (
-    <div className="rounded-xl bg-primary relative xl:flex-1/2 max-h-[352px] h-fit overflow-y-auto">
+    <div className="rounded-xl bg-primary relative 2xl:flex-1/2 max-h-[352px] h-fit max-w-[38rem] lg:w-[35rem] overflow-y-auto">
       <img
         src="/dashboard/faded-pos.png"
         alt=""
-        className="md:w-80 lg:w-full"
+        className="md:w-80 lg:w-full 2xl:w-full max-h-80 2xl:h-80"
       />
-      <div className="w-full flex flex-col gap-5 xl:gap-8 p-2 lg:p-4 absolute top-2">
-        <div className=" flex items-center justify-between">
-          <p className="text-white font-semibold text-base md:text-lg lg:text-xl">
+      <div className="w-full flex flex-col gap-5 2xl:gap-8 p-2 2xl:p-4 absolute top-2">
+        <div className="flex items-center justify-between">
+          <p className="text-white font-semibold text-base md:text-lg 2xl:text-xl">
             Total POS Terminal
           </p>
         </div>
         <div className="flex flex-col items-center mx-auto gap-2 w-full">
-          <p className="text-white font-semibold text-base md:text-lg lg:text-5xl">
+          <p className="text-white font-semibold text-base md:text-lg lg:text-2xl 2xl:text-5xl">
             30
           </p>
           <p className="text-xs lg:text-sm text-white">
@@ -25,13 +25,13 @@ const PosTerminal = () => {
           <hr className="bg-white w-full h-0.5 mt-1.5" />
         </div>
 
-        <div className="flex items-center justify-between lg:gap-10">
+        <div className="flex items-center justify-between 2xl:gap-10">
           <div className="flex flex-col gap-3 items-center">
             <p className="text-xs md:text-sm lg:text-base text-white">
               Active Terminals
             </p>
             <div className="flex items-center gap-2 w-full">
-              <p className="text-white text-lg md:text-2xl lg:text-3xl">21</p>
+              <p className="text-white text-lg md:text-2xl 2xl:text-3xl">21</p>
               <div className="bg-white rounded-3xl">
                 <div className="flex items-center lg:py-0.5 px-1 lg:px-1.5 text-[#2CC974]">
                   <GoTriangleUp />
@@ -48,7 +48,7 @@ const PosTerminal = () => {
               Inactive Terminals
             </p>
             <div className="flex items-center gap-2 w-full">
-              <p className="text-white text-lg md:text-2xl lg:text-3xl">09</p>
+              <p className="text-white text-lg md:text-2xl 2xl:text-3xl">09</p>
               <div className="bg-white rounded-3xl">
                 <div className="flex items-center lg:py-0.5 px-1 lg:px-1.5 text-[#FF2828]">
                   <GoTriangleUp />
