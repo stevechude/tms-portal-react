@@ -78,7 +78,7 @@ const Login = () => {
 
         <button
           onClick={handleLogin}
-          className="bg-primary rounded-3xl py-2 xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm xl:text-base"
+          className="bg-primary rounded-3xl py-2 xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm xl:text-base xl:mt-10"
         >
           Login
         </button>
