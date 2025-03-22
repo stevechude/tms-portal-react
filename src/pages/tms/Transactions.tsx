@@ -5,12 +5,15 @@ import DocumentIcon from "../../assets/DocumentIcon";
 import Table from "../../components/table/Table";
 import { transactionTableData } from "../../lib/tranxTableData";
 import ReactPaginate from "react-paginate";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import TitleContainer from "../../components/re-usable/TitleContainer";
 
 const Transactions = () => {
   const [itemsPerPage] = useState(10);
   const [itemOffset, setItemOffset] = useState(0);
   const [showingNumber, setShowingNumber] = useState(0);
+  const [calendar, setCalendar] = useState("");
+  const calendarRef = useRef<HTMLDivElement | null>(null);
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = transactionTableData?.slice(itemOffset, endOffset);
@@ -33,19 +36,13 @@ const Transactions = () => {
   return (
     <DashLayout>
       <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 w-full">
-        <div className="bg-white rounded-3xl">
-          <div className="flex items-center justify-between p-2 lg:px-5">
-            <div className="flex flex-col gap-1">
-              <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
-                Transactions
-              </p>
-              <p className="text-xs lg:text-sm text-secondary">
-                Time to check in on today's portfolio activity
-              </p>
-            </div>
-            <DropButton title="Today" />
-          </div>
-        </div>
+        <TitleContainer
+          title="Transactions"
+          subTitle="Time to check in on today's portfolio activity"
+          calendarRef={calendarRef}
+          calendar={calendar}
+          setCalendar={setCalendar}
+        />
 
         {/* trx table section */}
         <div className="bg-white w-full rounded-t-3xl overflow-y-auto">

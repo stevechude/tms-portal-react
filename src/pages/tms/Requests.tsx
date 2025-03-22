@@ -5,10 +5,11 @@ import Table from "../../components/table/Table";
 import AddCircle from "../../assets/AddCircle";
 import { requestTableData } from "../../lib/requestTableData";
 import ReactPaginate from "react-paginate";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Modal } from "../../components/modal/Modal";
 import RequestCard from "../../components/requests/RequestCard";
 import CardSuccessful from "../../components/cards/CardSuccessful";
+import TitleContainer from "../../components/re-usable/TitleContainer";
 
 const Requests = () => {
   const [itemsPerPage] = useState(10);
@@ -16,6 +17,8 @@ const Requests = () => {
   const [showingNumber, setShowingNumber] = useState(0);
   const [makeRequest, setMakeRequest] = useState(false);
   const [showDone, setShowDone] = useState(false);
+  const [calendar, setCalendar] = useState("");
+  const calendarRef = useRef<HTMLDivElement | null>(null);
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = requestTableData?.slice(itemOffset, endOffset);
@@ -42,19 +45,13 @@ const Requests = () => {
   return (
     <DashLayout>
       <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 w-full">
-        <div className="bg-white rounded-3xl">
-          <div className="flex items-center justify-between p-2 lg:px-5">
-            <div className="flex flex-col gap-1">
-              <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
-                Requests
-              </p>
-              <p className="text-xs lg:text-sm text-secondary">
-                Time to check in on today's portfolio activity
-              </p>
-            </div>
-            <DropButton title="Today" />
-          </div>
-        </div>
+        <TitleContainer
+          title="Requests"
+          subTitle="Time to check in on today's portfolio activity"
+          calendarRef={calendarRef}
+          calendar={calendar}
+          setCalendar={setCalendar}
+        />
 
         {/* trx table section */}
         <div className="bg-white w-full rounded-t-3xl overflow-y-auto">
