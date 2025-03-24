@@ -3,8 +3,72 @@ import { MdOutlineEmail, MdOutlinePhoneEnabled } from "react-icons/md";
 import { TbUserEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import Authlayout from "../../components/layouts/Authlayout";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { createAccountType } from "../../types/auth";
+import { CreateAccount } from "../../services/auth-services";
+import Loader from "../../assets/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// character validation error message
+const getCharacterValidationError = (str: string) => {
+  return `Your password must have at least 1 ${str} character`;
+};
+
+const registerSchema = yup
+  .object({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    companyName: yup.string().required("Business name is required"),
+    email: yup.string().required().email("Email is not valid"),
+    phoneNumber: yup
+      .string()
+      .required()
+      .matches(
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        "phone number is not valid"
+      ),
+    password: yup
+      .string()
+      .required("please enter a password")
+      .min(6, "password is too short!")
+      .max(20, "password is too  long!")
+      .matches(/[0-9]/, "password should have 1 digit")
+      .matches(/[a-z]/, getCharacterValidationError("lowercase"))
+      .matches(/[A-Z]/, getCharacterValidationError("uppercase"))
+      .matches(
+        /[!@#$%^&*()+_"?><]/,
+        getCharacterValidationError("special character")
+      ),
+    confirmPassword: yup
+      .string()
+      .required("Please confirm your password")
+      .oneOf([yup.ref("password")], "Passwords must match"),
+  })
+  .required();
 
 const Register = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+    mode: "onChange",
+  });
+
+  const handleRegister = async (data: createAccountType) => {
+    try {
+      const result = await CreateAccount(data);
+      console.log("show result==", result);
+    } catch (error) {
+      console.log("register error==", error);
+    }
+  };
+
   return (
     <Authlayout>
       <div className="flex flex-col gap-7 lg:gap-4 xl:gap-7">
@@ -18,63 +82,87 @@ const Register = () => {
           </p>
         </div>
 
-        <form className="flex flex-col gap-5 lg:gap-3 xl:gap-5 w-full px-2 lg:p-0">
+        <form
+          onSubmit={handleSubmit(handleRegister)}
+          className="flex flex-col gap-5 lg:gap-3 xl:gap-5 w-full px-2 lg:p-0"
+        >
           <div className="flex flex-col gap-5 lg:gap-3 xl:gap-5">
             <div className="flex items-center gap-4 justify-between">
               <div className="flex flex-col gap-1">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="firstName"
                   className="text-primary text-sm xl:text-base"
                 >
                   Enter First Name
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
-                    />
-                    <TbUserEdit size={20} className="" />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        type="text"
+                        id="firstName"
+                        {...register("firstName")}
+                        placeholder="First Name"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                      />
+                      <TbUserEdit size={20} className="" />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.firstName?.message}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
                 <label
-                  htmlFor="last-name"
+                  htmlFor="lastName"
                   className="text-primary text-sm xl:text-base"
                 >
                   Enter Last Name
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl"
-                    />
-                    <TbUserEdit size={20} className="" />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        type="text"
+                        id="lastName"
+                        {...register("lastName")}
+                        placeholder="Last Name"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                      />
+                      <TbUserEdit size={20} className="" />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.lastName?.message}
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-1">
               <label
-                htmlFor="business-name"
+                htmlFor="companyName"
                 className="text-primary text-sm xl:text-base"
               >
                 Enter Business Name
               </label>
-              <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                  <input
-                    type="text"
-                    placeholder="Business Name"
-                    className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl"
-                  />
-                  <TbUserEdit size={20} className="" />
+              <div className="flex flex-col">
+                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                    <input
+                      type="text"
+                      id="companyName"
+                      {...register("companyName")}
+                      placeholder="Business Name"
+                      className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                    />
+                    <TbUserEdit size={20} className="" />
+                  </div>
                 </div>
+                <span className="text-red-500 text-xs">
+                  {errors.companyName?.message}
+                </span>
               </div>
             </div>
 
@@ -86,33 +174,47 @@ const Register = () => {
                 >
                   Enter Email
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl"
-                    />
-                    <MdOutlineEmail size={20} className="" />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        type="email"
+                        {...register("email")}
+                        maxLength={40}
+                        placeholder="Email"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                      />
+                      <MdOutlineEmail size={20} className="" />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.email?.message}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
                 <label
-                  htmlFor="phone"
+                  htmlFor="phoneNumber"
                   className="text-primary text-sm xl:text-base"
                 >
                   Enter Phone Number
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      type="number"
-                      placeholder="Phone Number"
-                      className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl spin-button-none"
-                    />
-                    <MdOutlinePhoneEnabled size={20} className="" />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        type="number"
+                        id="phoneNumber"
+                        {...register("phoneNumber")}
+                        placeholder="Phone Number"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
+                      />
+                      <MdOutlinePhoneEnabled size={20} className="" />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.phoneNumber?.message}
+                  </span>
                 </div>
               </div>
             </div>
@@ -125,50 +227,63 @@ const Register = () => {
                 >
                   Enter Password
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      name="password"
-                      id="password"
-                      type="password"
-                      placeholder="Password"
-                      className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl"
-                    />
-                    <AiOutlineEyeInvisible
-                      size={20}
-                      className="cursor-pointer"
-                    />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        id="password"
+                        {...register("password")}
+                        type="password"
+                        placeholder="Password"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                      />
+                      <AiOutlineEyeInvisible
+                        size={20}
+                        className="cursor-pointer"
+                      />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.password?.message}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
                 <label
-                  htmlFor="confirm-password"
+                  htmlFor="confirmPassword"
                   className="text-primary text-sm xl:text-base"
                 >
                   Confirm Password
                 </label>
-                <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-                  <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                    <input
-                      type="password"
-                      name="confirm-password"
-                      id="confirm-password"
-                      placeholder="Confirm Password"
-                      className="w-full h-full pl-4 py-2 xl:py-3 outline-0 rounded-l-3xl spin-button-none"
-                    />
-                    <AiOutlineEyeInvisible
-                      size={20}
-                      className="cursor-pointer"
-                    />
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                    <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                      <input
+                        type="password"
+                        id="confirmPassword"
+                        {...register("confirmPassword")}
+                        placeholder="Confirm Password"
+                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
+                      />
+                      <AiOutlineEyeInvisible
+                        size={20}
+                        className="cursor-pointer"
+                      />
+                    </div>
                   </div>
+                  <span className="text-red-500 text-xs">
+                    {errors.confirmPassword?.message}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <button className="bg-primary rounded-3xl text-xs md:text-sm xl:text-base py-2 xl:py-3 w-full text-white cursor-pointer mt-4">
-            Continue
+          <button
+            type="submit"
+            className="bg-primary rounded-3xl text-xs md:text-sm xl:text-base py-2 2xl:py-3 w-full text-white cursor-pointer mt-4 flex items-center justify-center"
+          >
+            {isSubmitting ? <Loader /> : <p>Continue</p>}
           </button>
         </form>
 
