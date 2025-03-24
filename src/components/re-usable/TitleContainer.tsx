@@ -53,7 +53,7 @@ const TitleContainer = ({
       <div className="bg-white rounded-3xl">
         <div className="relative flex items-center justify-between p-2 lg:px-5">
           <div className="flex flex-col gap-1">
-            <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+            <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
               {title}
             </p>
             <p className="text-xs lg:text-sm text-secondary">{subTitle}</p>

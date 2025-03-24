@@ -2,20 +2,20 @@ import { GoTriangleUp } from "react-icons/go";
 
 const PosTerminal = () => {
   return (
-    <div className="rounded-xl bg-primary relative 2xl:flex-1/2 max-h-[352px] h-fit max-w-[35rem] lg:w-[35rem] overflow-y-auto">
+    <div className="rounded-xl bg-primary relative 2xl:flex-1/2 max-h-[352px] h-fit max-w-[35rem] lg:w-[35rem] xl:w-[70%] overflow-y-auto">
       <img
         src="/dashboard/faded-pos.png"
         alt=""
-        className="md:w-80 lg:w-full 2xl:w-full max-h-80 2xl:h-80"
+        className="md:w-80 lg:w-full xl:w-full max-h-80 xl:h-80"
       />
-      <div className="w-full flex flex-col gap-5 2xl:gap-8 p-2 2xl:p-4 absolute top-2">
-        <div className="flex items-center justify-between">
-          <p className="text-white font-semibold text-base md:text-lg 2xl:text-xl">
+      <div className="w-full flex flex-col gap-5 xl:gap-8 p-2 xl:p-4 absolute top-2">
+        <div className="flex items-center justify-center">
+          <p className="text-white font-medium text-base md:text-lg xl:text-2xl">
             Total POS Terminal
           </p>
         </div>
         <div className="flex flex-col items-center mx-auto gap-2 w-full">
-          <p className="text-white font-semibold text-base md:text-lg lg:text-2xl 2xl:text-5xl">
+          <p className="text-white font-medium text-base md:text-lg lg:text-3xl xl:text-3xl">
             30
           </p>
           <p className="text-xs lg:text-sm text-white">

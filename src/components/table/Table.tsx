@@ -74,7 +74,7 @@ const Table = ({ headers, data, click }: Props) => {
             {headers?.map((header, i) => (
               <th
                 key={header?.key}
-                className={`text-left text-black px-4 py-3.5 text-sm lg:text-base ${
+                className={`text-left text-black font-medium px-4 py-3.5 text-sm lg:text-base ${
                   i === 0 ? "rounded-l-2xl" : ""
                 }`}
               >

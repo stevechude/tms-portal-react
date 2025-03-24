@@ -12,7 +12,7 @@ const PopUp = ({ onClose }: Props) => {
         <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
           <InfoCircle />
           <div className="flex flex-col gap-0.5">
-            <p className="text-[#15171C] font-semibold lg:text-lg">
+            <p className="text-[#15171C] font-medium lg:text-lg">
               Profile Update - Business Information
             </p>
             <p className="text-secondary font-light text-xs">

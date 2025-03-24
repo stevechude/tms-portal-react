@@ -15,7 +15,7 @@ const Dashboard = () => {
         {/* greeting */}
         <div className="bg-white rounded-xl">
           <div className="flex flex-col gap-1 px-2 lg:px-4 py-2">
-            <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+            <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
               Good Afternoon, John Doe 👋
             </p>
             <p className="text-xs lg:text-sm text-secondary font-light">
@@ -27,9 +27,9 @@ const Dashboard = () => {
         {callPopUp && <PopUp onClose={() => setCallPopUp(false)} />}
 
         {/* cards */}
-        <div className="flex items-center 2xl:justify-between gap-4 lg:gap-2 2xl:gap-4 flex-wrap lg:flex-nowrap">
+        <div className="flex items-center 2xl:justify-between gap-4 lg:gap-2 2xl:gap-4 flex-wrap lg:flex-nowrap w-full">
           <PosTerminal />
-          <div className="flex items-center lg:justify-end gap-5 flex-wrap 2xl:grid 2xl:grid-cols-2 2xl:w-fit w-full">
+          <div className="flex items-center lg:justify-end gap-5 flex-wrap 2xl:grid 2xl:grid-cols-2 2xl:w-[60%] w-full h-full">
             {mockTrxData?.map((data) => (
               <TransactionCard
                 key={data.id}
