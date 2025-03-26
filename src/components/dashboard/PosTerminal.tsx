@@ -2,7 +2,7 @@ import { GoTriangleUp } from "react-icons/go";
 
 const PosTerminal = () => {
   return (
-    <div className="rounded-xl bg-primary relative 2xl:flex-1/2 max-h-[352px] h-fit max-w-[35rem] lg:w-[35rem] xl:w-[70%] overflow-y-auto">
+    <div className="rounded-xl bg-primary relative 2xl:flex-1/2 max-h-[352px] h-fit max-w-[35re] lg:w-full xl:w-[100%] overflow-y-auto">
       <img
         src="/dashboard/faded-pos.png"
         alt=""

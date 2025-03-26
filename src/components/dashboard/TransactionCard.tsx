@@ -11,7 +11,7 @@ type Props = {
 
 const TransactionCard = ({ title, digit, extra, percentage, info }: Props) => {
   return (
-    <div className="bg-white shadow-sm rounded-2xl w-80 lg:w-72 xl:w-80 2xl:w-full xl:h-[150px]">
+    <div className="bg-white shadow-sm rounded-2xl w-80 lg:w-72 xl:w-full 2xl:w-full xl:h-[150px]">
       <div className="p-2 md:p-3 2xl:p-4 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <p>{title}</p>

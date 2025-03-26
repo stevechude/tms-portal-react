@@ -54,7 +54,7 @@ const BusinessInfo = () => {
         >
           <div className="flex flex-col gap-8 lg:gap-10">
             <div className="flex flex-wrap items-center gap-4 w-full">
-              <div className="flex flex-col gap-1 w-full lg:w-64">
+              <div className="flex flex-col gap-1 w-full xl:w-64">
                 <label
                   htmlFor="first-name"
                   className="text-primary text-sm lg:text-base"
@@ -72,7 +72,7 @@ const BusinessInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 w-full lg:w-64">
+              <div className="flex flex-col gap-1 w-full xl:w-64">
                 <label
                   htmlFor="last-name"
                   className="text-primary text-sm lg:text-base"
@@ -93,7 +93,7 @@ const BusinessInfo = () => {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 w-full">
-              <div className="flex flex-col gap-1 w-full lg:w-64">
+              <div className="flex flex-col gap-1 w-full xl:w-64">
                 <label
                   htmlFor="business-name"
                   className="text-primary text-sm lg:text-base"
@@ -111,7 +111,7 @@ const BusinessInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 w-full lg:w-64">
+              <div className="flex flex-col gap-1 w-full xl:w-64">
                 <label
                   htmlFor="business-name"
                   className="text-primary text-sm lg:text-base"

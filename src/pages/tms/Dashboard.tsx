@@ -27,9 +27,9 @@ const Dashboard = () => {
         {callPopUp && <PopUp onClose={() => setCallPopUp(false)} />}
 
         {/* cards */}
-        <div className="flex items-center 2xl:justify-between gap-4 lg:gap-2 2xl:gap-4 flex-wrap lg:flex-nowrap w-full">
+        <div className="flex items-center 2xl:justify-between gap-4 lg:gap-2 2xl:gap-4 flex-wrap xl:grid xl:grid-cols-2 w-full">
           <PosTerminal />
-          <div className="flex items-center lg:justify-end gap-5 flex-wrap 2xl:grid 2xl:grid-cols-2 2xl:w-[60%] w-full h-full">
+          <div className="flex items-center lg:justify-end gap-5 flex-wrap xl:grid xl:grid-cols-2 w-full h-full">
             {mockTrxData?.map((data) => (
               <TransactionCard
                 key={data.id}
