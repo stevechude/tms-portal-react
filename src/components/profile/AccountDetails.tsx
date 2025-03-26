@@ -2,7 +2,6 @@ import { TbUserEdit } from "react-icons/tb";
 import TextBtn from "../buttons/TextBtn";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
-import UpdatedPrompt from "./UpdatedPrompt";
 import CardSuccessful from "../cards/CardSuccessful";
 
 const accountType = ["savings", "Corporate"];
@@ -20,7 +19,7 @@ const AccountDetails = () => {
     <>
       <div className="lg:px-7 flex gap-7 flex-wrap lg:flex-nowrap justify-between overflow-y-auto h-full w-full">
         <div className="flex flex-col gap-1">
-          <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+          <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
             Account Details
           </p>
           <p className="text-xs lg:text-sm text-secondary">
@@ -46,7 +45,7 @@ const AccountDetails = () => {
                   <input
                     type="number"
                     placeholder="Account Number"
-                    className="w-full h-full pl-4 py-2 md:py-3 outline-0 rounded-l-3xl spin-button-none"
+                    className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
                   />
                   <TbUserEdit size={20} className="" />
                 </div>
@@ -64,7 +63,7 @@ const AccountDetails = () => {
                 <select
                   id="account-type"
                   name="account-type"
-                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 md:py-3 outline-0 placeholder:text-[#98A2B3]"
+                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 placeholder:text-[#98A2B3]"
                 >
                   <option value="">Account Type</option>
                   {accountType?.map((option) => (
@@ -87,7 +86,7 @@ const AccountDetails = () => {
                 <select
                   id="branch"
                   name="branch"
-                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 md:py-3 outline-0 placeholder:text-[#98A2B3]"
+                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 placeholder:text-[#98A2B3]"
                 >
                   <option value="">Branch</option>
                   {branch?.map((option) => (

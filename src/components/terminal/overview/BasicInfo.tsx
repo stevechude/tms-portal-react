@@ -23,6 +23,10 @@ const BasicInfo = () => {
           <p className="text-[#667085]">Location</p>
           <p>Lagos, Nigeria</p>
         </div>
+        <div className="flex items-center justify-between">
+          <p className="text-[#667085]">Branch</p>
+          <p>Head-Office Branch</p>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import TextBtn from "../buttons/TextBtn";
 import { MdOutlinePhoneEnabled } from "react-icons/md";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
-import UpdatedPrompt from "./UpdatedPrompt";
 import CardSuccessful from "../cards/CardSuccessful";
 
 const userTitle = ["Mr", "Mrs", "Miss"];
@@ -20,7 +19,7 @@ const DirectorDetails = () => {
     <>
       <div className="lg:px-7 flex gap-7 flex-wrap lg:flex-nowrap justify-between overflow-y-auto h-full w-full">
         <div className="flex flex-col gap-1">
-          <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+          <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
             Director’s Details
           </p>
           <p className="text-xs lg:text-sm text-secondary">
@@ -45,7 +44,7 @@ const DirectorDetails = () => {
                 <select
                   id="description"
                   name="description"
-                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 md:py-3 outline-0 placeholder:text-[#98A2B3]"
+                  className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 placeholder:text-[#98A2B3]"
                 >
                   <option value="">Select Category</option>
                   {userTitle?.map((option) => (
@@ -70,7 +69,7 @@ const DirectorDetails = () => {
                     <input
                       type="text"
                       placeholder="Witty Technology Limited"
-                      className="w-full h-full pl-4 py-2 md:py-2.5 outline-0 rounded-l-3xl placeholder:text-[#98A2B3]"
+                      className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl placeholder:text-[#98A2B3]"
                     />
                     <TbUserEdit size={20} className="" />
                   </div>
@@ -88,7 +87,7 @@ const DirectorDetails = () => {
                     <input
                       type="number"
                       placeholder="Phone Number"
-                      className="w-full h-full pl-4 py-2 md:py-2.5 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
+                      className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
                     />
                     <TbUserEdit size={20} className="" />
                   </div>
@@ -109,7 +108,7 @@ const DirectorDetails = () => {
                     <input
                       type="number"
                       placeholder="Phone Number"
-                      className="w-full h-full pl-4 py-2 md:py-2.5 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
+                      className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
                     />
                     <MdOutlinePhoneEnabled size={20} className="" />
                   </div>
@@ -127,7 +126,7 @@ const DirectorDetails = () => {
                     <input
                       type="text"
                       placeholder="Witty Technology Limited"
-                      className="w-full h-full pl-4 py-2 md:py-2.5 outline-0 rounded-l-3xl placeholder:text-[#98A2B3]"
+                      className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl placeholder:text-[#98A2B3]"
                     />
                     <TbUserEdit size={20} className="" />
                   </div>

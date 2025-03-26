@@ -7,7 +7,7 @@ const RequestDetails = () => {
         <div className="px-2 py-3 lg:px-8 lg:py-8 flex flex-col gap-7 lg:gap-0">
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-1">
-              <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+              <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
                 Request Details
               </p>
               <p className="text-xs lg:text-sm text-secondary">

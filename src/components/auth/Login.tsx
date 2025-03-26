@@ -26,14 +26,14 @@ const Login = () => {
       <form className="flex flex-col gap-10 lg:gap-5 xl:gap-10 w-full px-2 lg:p-0">
         <div className="flex flex-col gap-1">
           <label htmlFor="email" className="text-primary text-sm xl:text-base">
-            Enter Email or Phone Number
+            Enter Email
           </label>
           <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
             <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
               <input
                 type="email"
                 placeholder="Email or Phone Number"
-                className="w-full h-full pl-4 py-2 md:py-3 outline-0 rounded-l-3xl"
+                className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
               />
               <TbUserEdit size={20} className="" />
             </div>
@@ -51,7 +51,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full h-full pl-4 py-2 md:py-3 outline-0 rounded-l-3xl"
+                className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
               />
               <AiOutlineEyeInvisible size={20} className="cursor-pointer" />
               {/* <AiOutlineEye /> */}
@@ -78,7 +78,7 @@ const Login = () => {
 
         <button
           onClick={handleLogin}
-          className="bg-primary rounded-3xl py-2 xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm xl:text-base xl:mt-10"
+          className="bg-primary rounded-3xl py-2 xl:py-2.5 2xl:py-3 w-full text-white cursor-pointer text-xs md:text-sm xl:text-base xl:mt-10"
         >
           Login
         </button>

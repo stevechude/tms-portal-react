@@ -11,7 +11,7 @@ const Technical = () => {
     <>
       <div className="lg:px-7 flex gap-7 flex-wrap justify-between overflow-y-auto h-full">
         <div className="flex flex-col gap-1">
-          <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+          <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
             Technical Overview
           </p>
           <p className="text-xs lg:text-sm text-secondary">

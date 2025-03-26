@@ -25,7 +25,7 @@ const Profile = () => {
         <div className="px-2 py-3 lg:px-5 lg:py-5 flex flex-col gap-7">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
-              <p className="text-base text-primary md:text-lg lg:text-xl font-semibold">
+              <p className="text-base text-primary md:text-lg lg:text-xl font-medium">
                 Profile Details
               </p>
               <p className="text-xs lg:text-sm text-secondary">

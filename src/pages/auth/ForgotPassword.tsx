@@ -42,14 +42,14 @@ const ForgotPassword = () => {
                 <input
                   type="email"
                   placeholder="Email or Phone Number"
-                  className="w-full h-full pl-4 py-2 md:py-3 outline-0 rounded-l-3xl"
+                  className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                 />
                 <TbUserEdit size={20} className="" />
               </div>
             </div>
           </div>
 
-          <button className="bg-primary rounded-3xl py-2 xl:py-3 w-full text-white cursor-pointer mt-10 xl:mt-20 text-xs md:text-sm xl:text-base">
+          <button className="bg-primary rounded-3xl py-2 xl:py-2.5 2xl:py-3 w-full text-white cursor-pointer mt-10 xl:mt-20 text-xs md:text-sm xl:text-base">
             Continue
           </button>
         </form>

@@ -101,9 +101,10 @@ const Register = () => {
                       <input
                         type="text"
                         id="firstName"
+                        required
                         {...register("firstName")}
                         placeholder="First Name"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                       />
                       <TbUserEdit size={20} className="" />
                     </div>
@@ -126,9 +127,10 @@ const Register = () => {
                       <input
                         type="text"
                         id="lastName"
+                        required
                         {...register("lastName")}
                         placeholder="Last Name"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                       />
                       <TbUserEdit size={20} className="" />
                     </div>
@@ -153,9 +155,10 @@ const Register = () => {
                     <input
                       type="text"
                       id="companyName"
+                      required
                       {...register("companyName")}
                       placeholder="Business Name"
-                      className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                      className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                     />
                     <TbUserEdit size={20} className="" />
                   </div>
@@ -180,9 +183,10 @@ const Register = () => {
                       <input
                         type="email"
                         {...register("email")}
+                        required
                         maxLength={40}
                         placeholder="Email"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                       />
                       <MdOutlineEmail size={20} className="" />
                     </div>
@@ -205,9 +209,10 @@ const Register = () => {
                       <input
                         type="number"
                         id="phoneNumber"
+                        required
                         {...register("phoneNumber")}
                         placeholder="Phone Number"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
                       />
                       <MdOutlinePhoneEnabled size={20} className="" />
                     </div>
@@ -233,9 +238,10 @@ const Register = () => {
                       <input
                         id="password"
                         {...register("password")}
+                        required
                         type="password"
                         placeholder="Password"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                       />
                       <AiOutlineEyeInvisible
                         size={20}
@@ -261,9 +267,10 @@ const Register = () => {
                       <input
                         type="password"
                         id="confirmPassword"
+                        required
                         {...register("confirmPassword")}
                         placeholder="Confirm Password"
-                        className="w-full h-full pl-4 py-2 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
+                        className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
                       />
                       <AiOutlineEyeInvisible
                         size={20}
@@ -281,7 +288,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="bg-primary rounded-3xl text-xs md:text-sm xl:text-base py-2 2xl:py-3 w-full text-white cursor-pointer mt-4 flex items-center justify-center"
+            className="bg-primary rounded-3xl text-xs md:text-sm xl:text-base py-2 xl:py-2.5 2xl:py-3 w-full text-white cursor-pointer mt-4 flex items-center justify-center"
           >
             {isSubmitting ? <Loader /> : <p>Continue</p>}
           </button>

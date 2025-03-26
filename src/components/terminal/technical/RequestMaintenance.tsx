@@ -63,7 +63,7 @@ const RequestMaintenance = ({ cancel }: Props) => {
               <span className="text-xs md:text-sm text-tertiary">
                 {selectFile}
               </span>
-              <p className="text-xs md:text-sm lg:text-base">
+              <p className="text-xs md:text-sm 2xl:text-base">
                 PNG, JPG, JPEG or PDF
               </p>
             </div>

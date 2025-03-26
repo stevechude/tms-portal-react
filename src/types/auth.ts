@@ -7,3 +7,8 @@ export interface createAccountType {
   password: string;
   confirmPassword: string;
 }
+
+export interface loginAccountType {
+  email: string;
+  password: string;
+}
