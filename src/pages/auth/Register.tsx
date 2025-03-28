@@ -1,4 +1,4 @@
-import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { MdOutlineEmail, MdOutlinePhoneEnabled } from "react-icons/md";
 import { TbUserEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import { CreateAccount } from "../../services/auth-services";
 import Loader from "../../assets/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 // character validation error message
 const getCharacterValidationError = (str: string) => {
@@ -59,6 +60,8 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
     mode: "onChange",
   });
+  const [togglePassword, setTogglePassword] = useState(false);
+  const [toggleConfirmPassword, setToggleConfirmPassword] = useState(false);
 
   const handleRegister = async (data: createAccountType) => {
     try {
@@ -239,14 +242,23 @@ const Register = () => {
                         id="password"
                         {...register("password")}
                         required
-                        type="password"
+                        type={togglePassword ? "text" : "password"}
                         placeholder="Password"
                         className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
                       />
-                      <AiOutlineEyeInvisible
-                        size={20}
-                        className="cursor-pointer"
-                      />
+                      {togglePassword ? (
+                        <AiOutlineEye
+                          onClick={() => setTogglePassword(false)}
+                          size={20}
+                          className="cursor-pointer"
+                        />
+                      ) : (
+                        <AiOutlineEyeInvisible
+                          onClick={() => setTogglePassword(true)}
+                          size={20}
+                          className="cursor-pointer"
+                        />
+                      )}
                     </div>
                   </div>
                   <span className="text-red-500 text-xs">
@@ -265,17 +277,26 @@ const Register = () => {
                   <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
                     <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
                       <input
-                        type="password"
+                        type={toggleConfirmPassword ? "text" : "password"}
                         id="confirmPassword"
                         required
                         {...register("confirmPassword")}
                         placeholder="Confirm Password"
                         className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none"
                       />
-                      <AiOutlineEyeInvisible
-                        size={20}
-                        className="cursor-pointer"
-                      />
+                      {toggleConfirmPassword ? (
+                        <AiOutlineEye
+                          onClick={() => setToggleConfirmPassword(false)}
+                          size={20}
+                          className="cursor-pointer"
+                        />
+                      ) : (
+                        <AiOutlineEyeInvisible
+                          onClick={() => setToggleConfirmPassword(true)}
+                          size={20}
+                          className="cursor-pointer"
+                        />
+                      )}
                     </div>
                   </div>
                   <span className="text-red-500 text-xs">

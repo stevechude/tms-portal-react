@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { VerifyOtpService } from "../../services/auth-services";
+import Loader from "../../assets/Loader";
 
 type Props = {
   cancel: () => void;
@@ -8,6 +10,7 @@ type Props = {
 const OtpVerification = ({ cancel }: Props) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [timer, setTimer] = useState(59);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,8 +67,21 @@ const OtpVerification = ({ cancel }: Props) => {
     }
   };
 
-  const handleVerify = (e: any) => {
+  const handleVerify = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true);
+    try {
+      const body = {
+        email: "",
+        token: otp.join(""),
+      };
+      const result = await VerifyOtpService(body);
+      console.log("show result==", result);
+    } catch (error) {
+      console.log("OtpVerification error==", error);
+    } finally {
+      setIsLoading(false);
+    }
     navigate("/reset-password");
   };
 
@@ -122,7 +138,7 @@ const OtpVerification = ({ cancel }: Props) => {
               onClick={handleVerify}
               className="bg-primary text-white rounded-3xl px-3 lg:px-5 py-1.5 lg:py-2 cursor-pointer"
             >
-              Confirm
+              {isLoading ? <Loader /> : <p>Confirm</p>}
             </button>
           </div>
         </div>

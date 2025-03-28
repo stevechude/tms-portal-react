@@ -4,12 +4,36 @@ import { TbUserEdit } from "react-icons/tb";
 import { useState } from "react";
 import { Modal } from "../../components/modal/Modal";
 import OtpVerification from "../../components/cards/Otp";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { forgotPasswordType } from "../../types/auth";
+import { ForgotPasswordService } from "../../services/auth-services";
+import Loader from "../../assets/Loader";
+
+const forgotSchema = yup.object({
+  email: yup.string().required().email("Email is not valid"),
+});
 
 const ForgotPassword = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(forgotSchema),
+    mode: "onChange",
+  });
   const [userOtp, setUserOtp] = useState(false);
 
-  const handleForgotPassword = (e: any) => {
-    e.preventDefault();
+  const handleForgotPassword = async (data: forgotPasswordType) => {
+    try {
+      const result = await ForgotPasswordService(data);
+      console.log("show result==", result);
+    } catch (error) {
+      console.log("ForgotPassword error==", error);
+    }
     setUserOtp(true);
   };
 
@@ -21,13 +45,13 @@ const ForgotPassword = () => {
             Forgot Password
           </p>
           <p className="text-secondary font-medium text-xs md:text-sm xl:text-base text-center lg:text-start">
-            Enter your phone number or email associated with your account. We
-            will then send you an OTP for verification.
+            Enter your email associated with your account. We will then send you
+            an OTP for verification.
           </p>
         </div>
 
         <form
-          onSubmit={handleForgotPassword}
+          onSubmit={handleSubmit(handleForgotPassword)}
           className="flex flex-col gap-10 lg:gap-5 xl:gap-10 w-full px-2 lg:p-0"
         >
           <div className="flex flex-col gap-1">
@@ -35,22 +59,32 @@ const ForgotPassword = () => {
               htmlFor="email"
               className="text-primary text-sm xl:text-base"
             >
-              Enter Email or Phone Number
+              Enter Email
             </label>
-            <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
-              <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
-                <input
-                  type="email"
-                  placeholder="Email or Phone Number"
-                  className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
-                />
-                <TbUserEdit size={20} className="" />
+            <div className="flex flex-col">
+              <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
+                <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm xl:text-base">
+                  <input
+                    type="email"
+                    required
+                    {...register("email")}
+                    placeholder="Email or Phone Number"
+                    className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl"
+                  />
+                  <TbUserEdit size={20} className="" />
+                </div>
               </div>
+              <span className="text-red-500 text-xs">
+                {errors.email?.message}
+              </span>
             </div>
           </div>
 
-          <button className="bg-primary rounded-3xl py-2 xl:py-2.5 2xl:py-3 w-full text-white cursor-pointer mt-10 xl:mt-20 text-xs md:text-sm xl:text-base">
-            Continue
+          <button
+            type="submit"
+            className="bg-primary rounded-3xl py-2 xl:py-2.5 2xl:py-3 w-full text-white cursor-pointer mt-10 xl:mt-20 text-xs md:text-sm xl:text-base"
+          >
+            {isSubmitting ? <Loader /> : <p>Continue</p>}
           </button>
         </form>
 
