@@ -10,10 +10,14 @@ import Requests from "./pages/tms/Requests";
 import TerminalDetails from "./pages/tms/TerminalDetails";
 import RequestDetails from "./pages/tms/RequestDetails";
 import Profile from "./pages/tms/Profile";
+import ReduxProvider from "./provider/Reduxprovider";
+import QueryProvider from "./provider/QueryProvider";
 
 function AppRoutes() {
   return (
     <>
+     <ReduxProvider>
+      <QueryProvider>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -31,6 +35,8 @@ function AppRoutes() {
         <Route path="/terminals/:id" element={<TerminalDetails />} />
         <Route path="/requests/:id" element={<RequestDetails />} />
       </Routes>
+      </QueryProvider>
+      </ReduxProvider>
     </>
   );
 }

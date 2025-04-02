@@ -12,6 +12,10 @@ import Loader from "../../assets/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import { Modal } from "../../components/modal/Modal";
+import OtpVerification from "../../components/cards/Otp";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUserEmail } from "../../redux/features/authSlice";
 
 // character validation error message
 const getCharacterValidationError = (str: string) => {
@@ -62,18 +66,33 @@ const Register = () => {
   });
   const [togglePassword, setTogglePassword] = useState(false);
   const [toggleConfirmPassword, setToggleConfirmPassword] = useState(false);
+  const [userOtp, setUserOtp] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleRegister = async (data: createAccountType) => {
     try {
       const result = await CreateAccount(data);
       console.log("show result==", result);
-    } catch (error) {
+      if (result?.code == 200) {
+        toast.success(result?.message, {
+          theme: "colored",
+        });
+        dispatch(setUserEmail(result?.data?.email));
+        setTimeout(() => {
+          setUserOtp(true);
+        }, 2000);
+      }
+    } catch (error: any) {
       console.log("register error==", error);
+      toast.error(error?.response?.data?.message || "An error occurred", {
+        theme: "colored",
+      });
     }
   };
 
   return (
     <Authlayout>
+      <ToastContainer />
       <div className="flex flex-col gap-7 lg:gap-4 xl:gap-7">
         <div className="flex flex-col items-center lg:items-start gap-2">
           <p className="text-primary font-semibold text-xl md:text-2xl xl:text-3xl">
@@ -202,7 +221,7 @@ const Register = () => {
               <div className="flex flex-col gap-1">
                 <label
                   htmlFor="phoneNumber"
-                  className="text-primary text-sm xl:text-base"
+                  className="text-primary text-sm xl:text-base truncate"
                 >
                   Enter Phone Number
                 </label>
@@ -324,6 +343,11 @@ const Register = () => {
           </p>
         </div>
       </div>
+      {userOtp && (
+        <Modal show={userOtp} onClose={() => setUserOtp(false)}>
+          <OtpVerification cancel={() => setUserOtp(false)} />
+        </Modal>
+      )}
     </Authlayout>
   );
 };

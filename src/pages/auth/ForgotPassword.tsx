@@ -10,6 +10,9 @@ import * as yup from "yup";
 import { forgotPasswordType } from "../../types/auth";
 import { ForgotPasswordService } from "../../services/auth-services";
 import Loader from "../../assets/Loader";
+import { toast, ToastContainer } from "react-toastify";
+import { setUserEmail } from "../../redux/features/authSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 const forgotSchema = yup.object({
   email: yup.string().required().email("Email is not valid"),
@@ -26,19 +29,34 @@ const ForgotPassword = () => {
     mode: "onChange",
   });
   const [userOtp, setUserOtp] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleForgotPassword = async (data: forgotPasswordType) => {
     try {
       const result = await ForgotPasswordService(data);
       console.log("show result==", result);
-    } catch (error) {
+      if (result?.code == 200) {
+        dispatch(setUserEmail(result?.data?.email));
+        toast.success("OTP Sent!", {
+          theme: "colored",
+        });
+        setTimeout(() => {
+          setUserOtp(true);
+        }, 2000);
+      }
+    } catch (error: any) {
       console.log("ForgotPassword error==", error);
+      toast.error(error?.response?.data?.message || "An error occurred", {
+        theme: "colored",
+      });
+    } finally {
+      reset();
     }
-    setUserOtp(true);
   };
 
   return (
     <Authlayout>
+      <ToastContainer />
       <div className="flex flex-col gap-10 lg:gap-5 xl:gap-10">
         <div className="flex flex-col items-center lg:items-start gap-2">
           <p className="text-primary font-semibold text-xl md:text-3xl">

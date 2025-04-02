@@ -1,5 +1,6 @@
 import Header from "./Header";
 import SideBar from "./SideBar";
+import "react-toastify/dist/ReactToastify.css";
 
 const DashLayout = ({
   children,

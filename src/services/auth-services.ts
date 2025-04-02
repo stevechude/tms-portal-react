@@ -16,7 +16,7 @@ export const CreateAccount = async (body: createAccountType) => {
         "Content-Type": "application/json",
       },
     });
-    const data = response;
+    const data = response.data;
     if (!data) return;
     return data;
   } catch (error) {
@@ -34,7 +34,7 @@ export const LoginService = async (body: loginAccountType) => {
         "Content-Type": "application/json",
       },
     });
-    const data = response;
+    const data = response.data;
     if (!data) return;
     return data;
   } catch (error) {
@@ -56,7 +56,7 @@ export const ForgotPasswordService = async (body: forgotPasswordType) => {
         },
       }
     );
-    const data = response;
+    const data = response.data;
     if (!data) return;
     return data;
   } catch (error) {
@@ -78,7 +78,29 @@ export const VerifyOtpService = async (body: verifyOtpType) => {
         },
       }
     );
-    const data = response;
+    const data = response.data;
+    if (!data) return;
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+// RESET PASSWORD REQUEST
+export const ResetPasswordService = async (body: any) => {
+  try {
+    const response = await axios.post(
+      `${devURL}/Authentication/reset-password`,
+      body,
+      {
+        headers: {
+          Accept: "application/vnd.connect.v1+json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = response.data;
     if (!data) return;
     return data;
   } catch (error) {

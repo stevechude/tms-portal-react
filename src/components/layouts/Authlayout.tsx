@@ -4,6 +4,7 @@ import Pos from "../slides/Pos";
 import Performance from "../slides/Performance";
 // import required modules
 import { Autoplay } from "swiper/modules";
+import "react-toastify/dist/ReactToastify.css";
 
 // Import Swiper styles
 import "swiper/css";

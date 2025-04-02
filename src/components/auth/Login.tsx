@@ -9,6 +9,7 @@ import { loginAccountType } from "../../types/auth";
 import { LoginService } from "../../services/auth-services";
 import Loader from "../../assets/Loader";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const loginSchema = yup.object({
   email: yup.string().required().email("Email is not valid"),
@@ -32,14 +33,27 @@ const Login = () => {
     try {
       const result = await LoginService(data);
       console.log("show result==", result);
-      // navigate("/dashboard");
-    } catch (error) {
+      if (result?.code == 200) {
+        toast.success("Logged in successfully!", {
+          theme: "colored",
+        });
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+      }
+    } catch (error: any) {
       console.error(error);
+      toast.error(error?.response?.data?.message || "An error occurred", {
+        theme: "colored",
+      });
+    } finally {
+      reset();
     }
   };
 
   return (
     <Authlayout>
+      <ToastContainer />
       <div className="flex flex-col gap-2">
         <p className="text-primary font-semibold text-xl md:text-3xl">
           Terminal Management System
