@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { ToastContainer } from "react-toastify";
 
 type ModalProps = {
   children?: React.ReactNode;
@@ -21,6 +22,7 @@ export const Modal = ({ show, onClose, children }: ModalProps) => {
 
   return (
     <>
+      <ToastContainer />
       {isOpen && (
         <div className="fixed inset-0 z-[1005] flex items-center justify-center overflow-hidden">
           <div

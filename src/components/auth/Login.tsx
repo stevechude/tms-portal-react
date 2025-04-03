@@ -10,6 +10,9 @@ import { LoginService } from "../../services/auth-services";
 import Loader from "../../assets/Loader";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 const loginSchema = yup.object({
   email: yup.string().required().email("Email is not valid"),
@@ -37,9 +40,13 @@ const Login = () => {
         toast.success("Logged in successfully!", {
           theme: "colored",
         });
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 2000);
+        cookies.set("app-tok", result?.data?.token, {
+          path: "/",
+          secure: true,
+          sameSite: "strict",
+          // expires: new Date(result?.data?.expires),
+        });
+        navigate("/dashboard");
       }
     } catch (error: any) {
       console.error(error);
