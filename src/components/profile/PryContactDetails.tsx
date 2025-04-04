@@ -38,7 +38,7 @@ const PryContactDetails = () => {
                 htmlFor="business-name"
                 className="text-primary text-sm lg:text-base"
               >
-                Business Description<span className="text-red-500">*</span>
+                Title<span className="text-red-500">*</span>
               </label>
               <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
                 <select
@@ -46,7 +46,7 @@ const PryContactDetails = () => {
                   name="description"
                   className="flex items-center gap-1 md:gap-2 w-full mr-3 lg:mr-4 text-xs md:text-sm lg:text-base pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 placeholder:text-[#98A2B3]"
                 >
-                  <option value="">Select Category</option>
+                  <option value="">Select Title</option>
                   {userTitle?.map((option) => (
                     <option key={option} value={option}>
                       {option}

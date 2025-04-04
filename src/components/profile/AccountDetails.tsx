@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Modal } from "../modal/Modal";
 import CardSuccessful from "../cards/CardSuccessful";
 
-const accountType = ["savings", "Corporate"];
+// const accountType = ["savings", "Corporate"];
 const branch = ["Ajah", "Lekki", "Yaba", "Gbagada"];
 
 const AccountDetails = () => {
@@ -52,7 +52,7 @@ const AccountDetails = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-1">
+            {/* <div className="flex flex-col gap-1">
               <label
                 htmlFor="account-type"
                 className="text-primary text-sm lg:text-base"
@@ -73,7 +73,7 @@ const AccountDetails = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex flex-col gap-1">
               <label

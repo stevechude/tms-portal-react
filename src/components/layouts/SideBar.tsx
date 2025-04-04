@@ -84,7 +84,7 @@ const SideBar = () => {
       </div>
       {logoutOpen && (
         <Modal show={logoutOpen} onClose={() => setLogoutOpen(false)}>
-          <Logout />
+          <Logout onCancel={() => setLogoutOpen(false)} />
         </Modal>
       )}
     </>

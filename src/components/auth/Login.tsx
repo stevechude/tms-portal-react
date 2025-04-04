@@ -40,13 +40,15 @@ const Login = () => {
         toast.success("Logged in successfully!", {
           theme: "colored",
         });
-        cookies.set("app-tok", result?.data?.token, {
+        cookies.set("app-tok", result?.data?.jwtToken, {
           path: "/",
           secure: true,
           sameSite: "strict",
-          // expires: new Date(result?.data?.expires),
+          expires: new Date(result?.data?.expiryTime),
         });
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       }
     } catch (error: any) {
       console.error(error);
