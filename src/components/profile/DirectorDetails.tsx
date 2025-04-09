@@ -16,7 +16,7 @@ const directorDetailsSchema = yup
     title: yup.string().required("Title is required"),
     firstName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
-    phoneNumber: yup
+    phone: yup
       .string()
       .required("Phone Number is required")
       .matches(
@@ -139,7 +139,7 @@ const DirectorDetails = () => {
                   <div className="flex items-center border border-[#E3EFFC] rounded-3xl bg-[#FCFCFD] w-full">
                     <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm lg:text-base">
                       <input
-                        type="number"
+                        type="text"
                         {...register("lastName")}
                         placeholder="Last Name"
                         className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
@@ -157,7 +157,7 @@ const DirectorDetails = () => {
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex flex-col gap-1 w-full xl:w-64">
                 <label
-                  htmlFor="phoneNumber"
+                  htmlFor="phone"
                   className="text-primary text-sm lg:text-base"
                 >
                   Phone Number<span className="text-red-500">*</span>
@@ -167,7 +167,7 @@ const DirectorDetails = () => {
                     <div className="flex items-center gap-1 md:gap-2 w-full pr-3 lg:pr-4 text-xs md:text-sm lg:text-base">
                       <input
                         type="number"
-                        {...register("phoneNumber")}
+                        {...register("phone")}
                         placeholder="Phone Number"
                         className="w-full h-full pl-4 py-2 xl:py-2.5 2xl:py-3 outline-0 rounded-l-3xl spin-button-none placeholder:text-[#98A2B3]"
                       />
@@ -175,7 +175,7 @@ const DirectorDetails = () => {
                     </div>
                   </div>
                   <span className="text-red-500 text-xs">
-                    {errors.phoneNumber?.message}
+                    {errors.phone?.message}
                   </span>
                 </div>
               </div>
