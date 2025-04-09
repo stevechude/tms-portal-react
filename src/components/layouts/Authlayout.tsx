@@ -37,7 +37,7 @@ const Authlayout = ({
         </div>
         {/* forms */}
         <div className="flex lg:items-center justify-center w-full h-full lg:w-[50%] border border-[#98a2b3] rounded-2xl lg:border-0 overflow-y-auto">
-          <div className="flex flex-col mt-10 lg:mt-0 xl:mt-10 2xl:mt-40 gap-4 lg:gap-4 xl:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2 h-full">
+          <div className="flex flex-col mt-10 lg:mt-0 gap-4 lg:gap-4 xl:gap-6 items-center lg:items-start w-full md:max-w-[449px] px-2 h-full">
             {children}
             <div className="flex items-center justify-center w-full">
               <p className="font-satoshi text-secondary text-center text-xs md:text-sm xl:text-base">
