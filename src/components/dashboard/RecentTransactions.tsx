@@ -2,8 +2,11 @@ import BtnArrow from "../../assets/BtnArrow";
 import RecentIcon from "../../assets/RecentIcon";
 import { recentTableData } from "../../lib/recentTrxTable";
 import Table from "../table/Table";
+import { useNavigate } from "react-router-dom";
 
 const RecentTransactions = () => {
+  const navigation = useNavigate();
+
   return (
     <div className="bg-white rounded-t-2xl overflow-y-auto">
       <div className="px-2 py-3 md:p-4 lg:px-5 lg:py-6 flex flex-col gap-4">
@@ -12,7 +15,10 @@ const RecentTransactions = () => {
             <RecentIcon />
             <p className="lg:text-lg font-medium">Recent Transactions</p>
           </div>
-          <BtnArrow className="cursor-pointer self-end" />
+          <BtnArrow
+            onClick={() => navigation("/transactions")}
+            className="cursor-pointer self-end"
+          />
         </div>
         {/* Table */}
         <div>

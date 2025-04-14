@@ -1,8 +1,9 @@
 type Props = {
   className?: string;
+  onClick?: () => void | Promise<void>;
 };
 
-const BtnArrow = ({ className }: Props) => {
+const BtnArrow = ({ className, onClick }: Props) => {
   return (
     <svg
       width="30"
@@ -11,6 +12,7 @@ const BtnArrow = ({ className }: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      onClick={onClick}
     >
       <path
         d="M0.5 15C0.5 6.99187 6.99187 0.5 15 0.5C23.0081 0.5 29.5 6.99187 29.5 15C29.5 23.0081 23.0081 29.5 15 29.5C6.99187 29.5 0.5 23.0081 0.5 15Z"
